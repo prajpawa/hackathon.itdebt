@@ -1,6 +1,7 @@
 package com.capgemini.lern2shan.itdebt.bean;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -25,6 +26,8 @@ public class Asset {
     @Column(name = "provision_date")
 	private Date provisionDate;
 	
+	@Column(name = "patched_date")
+	private LocalDate patchedDate;
 	
 	
 	public String getAsset_id() {
@@ -39,15 +42,18 @@ public class Asset {
 	public void setassetName(String assetName) {
 		this.assetName = assetName;
 	}
-	
 	public Date getProvisionDate() {
 		return provisionDate;
 	}
 	public void setProvisionDate(Date provisionDate) {
 		this.provisionDate = provisionDate;
 	}
-	
-	
+	public LocalDate getPatchedDate() {
+		return patchedDate;
+	}
+	public void setPatchedDate(LocalDate patchedDate) {
+		this.patchedDate = patchedDate;
+	}
 	
 	public Asset()
 	{
@@ -68,5 +74,4 @@ public class Asset {
 
 	}
 	
-
 }

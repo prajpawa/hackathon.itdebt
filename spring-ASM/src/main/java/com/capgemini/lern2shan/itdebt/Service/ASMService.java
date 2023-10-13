@@ -2,6 +2,8 @@ package com.capgemini.lern2shan.itdebt.Service;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +75,31 @@ public class ASMService {
 		return asmrepo.countByProvisionDate(provisionDate);
 	}
 	
+	public List<Asset> findAssetPatchDateSixMonthsAgo()
+	{
+		
+		 LocalDate sixMonthsAgo = LocalDate.now().minusMonths(6);
+	        return asmrepo.findBypatchedDateBefore(sixMonthsAgo);
+	   
+	}
+	
+	public long countByPatchDateSixMonthsAgo() {
+		
+		LocalDate countSixMonthsAgo = LocalDate.now().minusMonths(6);
+        return asmrepo.countBypatchedDateBefore(countSixMonthsAgo);
+	}
 
+	public List<Asset> findAssetProvisionDate5YrsAgo()
+	{
+		LocalDate fiveYrsAgo=LocalDate.now().minus(Period.ofYears(5));
+		return asmrepo.findByprovisionDateBefore(fiveYrsAgo);
+	}
+
+public long countByProvisionDate5YrsAgo() {
+		
+		LocalDate count5YrsAgo = LocalDate.now().minus(Period.ofYears(5));
+        return asmrepo.countByprovisionDateBefore(count5YrsAgo);
+	}
+	
 
 }

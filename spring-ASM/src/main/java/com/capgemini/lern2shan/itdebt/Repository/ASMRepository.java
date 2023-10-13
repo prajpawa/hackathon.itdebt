@@ -1,13 +1,15 @@
 package com.capgemini.lern2shan.itdebt.Repository;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.stereotype.Repository;
 import com.capgemini.lern2shan.itdebt.bean.Asset;
 
+@Repository
 public interface ASMRepository extends JpaRepository<Asset, String> {
+	
 	
 	List<Asset> findAll();
 	
@@ -18,6 +20,14 @@ public interface ASMRepository extends JpaRepository<Asset, String> {
 	List<Asset> findByprovisionDate(Date provisionDate);
 
 	long countByProvisionDate(Date provisionDate);
+	
+	List<Asset> findBypatchedDateBefore(LocalDate sixMonthsAgo);
+	
+	long countBypatchedDateBefore(LocalDate countSixMonthsAgo);
+	
+	List<Asset> findByprovisionDateBefore(LocalDate fiveYrsAgo);
+	
+	long countByprovisionDateBefore(LocalDate count5YrsAgo);
 
 }
 

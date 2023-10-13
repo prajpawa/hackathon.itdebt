@@ -69,6 +69,32 @@ public class ASMController {
 		long dateCount= asmService.countByProvisionDate(provision_Date);
 		 return "COUNT OF ASSET ACCORDING TO PROVISIONAL DATE: " + dateCount;
 	 }
+	
+	@GetMapping("/last-patch-date")
+	public List<Asset> findAssetPatchDateSixMonthsAgo()
+	{
+		return asmService.findAssetPatchDateSixMonthsAgo();
+	}
+	
+	@GetMapping("/count-by-patch-date")
+	public String countAssetPatchDateSixMonthsAgo()
+	{
+		long patchDateCount= asmService.countByPatchDateSixMonthsAgo();
+		return "COUNT OF ASSET WHOSE PATCHED DATE IS GREATER THAN 6 MONTHS AGO:  " + patchDateCount;
+	}
+	
+	@GetMapping("/last5Years-provision-date")
+	public List<Asset> findAssetByProvisionDate()
+	{
+		return asmService.findAssetProvisionDate5YrsAgo();
+	}
+	
+	@GetMapping("/count-last5Years-provision-date")
+	public String CountAssetByProvisionDate()
+	{
+		long count5YrsProvisionDate =asmService.countByProvisionDate5YrsAgo();
+		return "COUNT OF ASSET WHOSE PROVISION DATE IS OF 5 YEARS BACK:  " + count5YrsProvisionDate;
+	}
 }
 
 
