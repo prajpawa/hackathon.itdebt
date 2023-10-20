@@ -27,7 +27,6 @@ public class ASMController {
 	private ASMService asmService;
 	
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	
 	@GetMapping("/details")
 	public List<Asset> getAllAssets()
 	{
@@ -42,6 +41,7 @@ public class ASMController {
 		
 	}
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/{assetName}/details")
     public ResponseEntity<ResponseEntity<List<Asset>>> searchAssetsByType(@PathVariable("assetName") String asset_name) {
 		ResponseEntity<List<Asset>> asset1 =  asmService.findAssetsByType(asset_name);
@@ -59,18 +59,21 @@ public class ASMController {
     }
 	   
 	// @GetMapping("/asset-count")
-	 @GetMapping("/assetName/count")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/assetName/count")
 	    public String countAssetsByName(@RequestParam(name="assetName") String assetName) {
 		 long countasset=asmService.countAssetsByName(assetName);
 	        return "Total Count Of " +assetName + " is : " +countasset;
 	    }
 	 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/find-by-date")
 	 public List<Asset> findAssetsByDate(@RequestParam(name="provision_Date") Date provision_Date)
 	 {
 		 return asmService.findByProvisionDate(provision_Date);
 	 }
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/count-by-date")
 	 public String countAssetsByDate(@RequestParam Date provision_Date)
 	 {
@@ -78,12 +81,14 @@ public class ASMController {
 		 return "COUNT OF ASSET ACCORDING TO PROVISIONAL DATE: " + dateCount;
 	 }
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/last-patch-date")
 	public List<Asset> findAssetPatchDateSixMonthsAgo()
 	{
 		return asmService.findAssetPatchDateSixMonthsAgo();
 	}
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/count-by-patch-date")
 	public String countAssetPatchDateSixMonthsAgo()
 	{
@@ -91,12 +96,14 @@ public class ASMController {
 		return "COUNT OF ASSET WHOSE PATCHED DATE IS GREATER THAN 6 MONTHS AGO:  " + patchDateCount;
 	}
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/last5Years-provision-date")
 	public List<Asset> findAssetByProvisionDate()
 	{
 		return asmService.findAssetProvisionDate5YrsAgo();
 	}
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/count-last5Years-provision-date")
 	public String CountAssetByProvisionDate()
 	{
@@ -104,6 +111,7 @@ public class ASMController {
 		return "COUNT OF ASSET WHOSE PROVISION DATE IS OF 5 YEARS BACK:  " + count5YrsProvisionDate;
 	}
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	 @GetMapping("/license")
 	    public ResponseEntity<List<AssetDetailsDTO>> findAssetsByLicenseType() {
 		 ResponseEntity<List<Asset>> licenseAssets = asmService.findAssetsByAssetType("license");
@@ -123,6 +131,7 @@ public class ASMController {
 		return ResponseEntity.ok(dtos);
 	 }
 	 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	 @GetMapping("/license/count")
 	    public String countByLicenseType() {
 		 long countlicenseasset=asmService.countLicenseAssetType("license");
