@@ -28,7 +28,10 @@ public interface ASMRepository extends JpaRepository<Asset, String> {
 	List<Asset> findByprovisionDateBefore(LocalDate fiveYrsAgo);
 	
 	long countByprovisionDateBefore(LocalDate count5YrsAgo);
+	
+	List<Asset> findByAssetTypeIgnoreCase(String asset_type);
 
+	long countByAssetType(String license);
 }
 
 

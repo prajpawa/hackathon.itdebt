@@ -95,11 +95,30 @@ public class ASMService {
 		return asmrepo.findByprovisionDateBefore(fiveYrsAgo);
 	}
 
-public long countByProvisionDate5YrsAgo() {
+	public long countByProvisionDate5YrsAgo() {
 		
 		LocalDate count5YrsAgo = LocalDate.now().minus(Period.ofYears(5));
         return asmrepo.countByprovisionDateBefore(count5YrsAgo);
 	}
 	
+
+	public ResponseEntity< List<Asset>> findAssetsByAssetType(String asset_type) 
+	{
+		List<Asset> assets= asmrepo.findByAssetTypeIgnoreCase(asset_type);
+		
+		 if (assets.isEmpty()) {
+	            
+	            throw new ResourceNotFoundException("LICENSE ASSET TYPE NOT FOUND: " +asset_type);
+	        }
+		 else {
+			 return new ResponseEntity< List<Asset>> (assets,HttpStatus.OK);
+		 }
+		 
+	}
+	
+	public long countLicenseAssetType(String license)
+	{
+		return asmrepo.countByAssetType(license);
+	}
 
 }

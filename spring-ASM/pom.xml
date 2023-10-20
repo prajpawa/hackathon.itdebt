@@ -10,8 +10,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.AMS</groupId>
-	<artifactId>ASM-example</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>ASM</artifactId>
+	<version>0.0.1</version>
 	<name>spring-ASM</name>
 	<description>Asset Managment System</description>
 	<properties>
